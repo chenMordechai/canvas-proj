@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +8,26 @@
     <link rel="stylesheet" href="css/main.css">
     <title>canvas</title>
 </head>
+
 <body onload="init()">
-  
-        <div>
-            <input type="color" class="color" name="color" form="frmRegister" onclick="changeColor()" />
-           
-        </div>
-        
-        
-        
-    
-            <canvas onmousedown="draw(event)" id="my-canvas" width="1000" height="500">
-                Update your browser to enjoy canvas!
-            </canvas>
+
+    <div>
+        <input type="color" class="color" name="color" form="frmRegister" onclick="changeColor()" />
+
+    </div>
 
 
+    <canvas  onmousedown="onMouseDown(event)" onmousemove="onMouseMove(event)" onmouseup="onMouseUp()" id="my-canvas" width="1000" height="800">
+        Update your browser to enjoy canvas!
+    </canvas>
+    <button onclick="changeEl('triangle')">Triangle</button>
+    <button onclick="changeEl('rect')">Rect</button>
+
+
+
+    <form action="">
+    </form>
     <script src="js/main.js"> </script>
 </body>
+
 </html>
