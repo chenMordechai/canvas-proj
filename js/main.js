@@ -23,6 +23,7 @@ function init() {
 
 
 function changeEl(elName) {
+    console.log(elName)
     currElement = elName
 }
 
