@@ -8,12 +8,17 @@
     <title>canvas</title>
 </head>
 <body onload="init()">
-    <canvas onmousedown="draw(event)" id="my-canvas" width="1000" height="800">
+    <canvas  onmousedown="(event)" id="my-canvas" width="1000" height="800">
         Update your browser to enjoy canvas!
     </canvas>
-    <button onclick="changeEl('triangle')">Triangle</button>
+    <!-- <button onclick="changeEl('triangle')">Triangle</button>
     <button onclick="changeEl('rect')">Rect</button>
-    
+     -->
+     <select onchange="changeEl(this.value)">
+    <option value="tri">Triangle</option>
+    <option value="rec">Rectangle</option>
+    <option value="cir">Circle</option>
+     </select>
 
 
     <form action="">

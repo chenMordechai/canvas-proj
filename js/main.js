@@ -16,6 +16,7 @@ let ctx
 let currElement = 'triangle'
 
 function changeEl(elName) {
+    console.log(elName)
     currElement = elName
 }
 
@@ -32,8 +33,8 @@ function draw(ev) {
         case 'rect':
             drawRect(offsetX, offsetY)
             break;
-        case 'text':
-            drawText('test',offsetX, offsetY)
+        case 'cir':
+            drawArc('test',offsetX, offsetY)
             break;
     }
     ctx.restore()
