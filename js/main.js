@@ -2,7 +2,7 @@
 
 let canvas
 let ctx
-let currElement = 'triangle'
+let gCurrElement = 'triangle'
 var mouseDown = 0;
 var lastX;
 var lastY;
@@ -23,85 +23,78 @@ function init() {
 
 
 function changeEl(elName) {
-    console.log(elName)
-    currElement = elName
+    // console.log(elName)
+    gCurrElement = elName
 }
 
-function draw(ev) {
-    console.log(ev)
+
+function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+}
+
+
+
+// /////////////////////////////////////////////////////
+function draw(ctx, x, y) {
+    var elColor = document.querySelector('.color').value
     ctx.save()
-    // const offsetX = ev.offsetX
-    // const offsetY = ev.offsetY
-    const {
-        offsetX,
-        offsetY
-    } = ev
-    switch (currElement) {
-        case 'triangle':
-            drawTriangle()
+    switch (gCurrElement) {
+        case 'tri':
+            drawTriangle(elColor, x, y)
             break;
-        case 'rect':
-            drawRect(offsetX, offsetY)
+        case 'rec':
+            drawRect(elColor, x, y)
             break;
-        case 'text':
-            drawText('test', offsetX, offsetY)
+        case 'cir':
+            drawArc(elColor, x, y)
+            break;
+        case 'li':
+            drawLine(elColor, ctx, x, y)
             break;
     }
     ctx.restore()
+ 
 }
 
-function clearCanvas() {
-    // ctx.fillStyle = 'yellow'
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
-    ctx.clearRect(50, 50, 100, 100)
-}
-
-// function clearCanvas(canvas,ctx) {
-//   ctx.clearRect(0, 0, canvas.width, canvas.height)
-// }
-
-function drawArc() {
+function drawLine(elColor, ctx, x, y) {
     ctx.beginPath();
-    ctx.arc(100, 75, 50, 0, 1 * Math.PI);
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(x, y);
+    ctx.strokeStyle = elColor
+    ctx.closePath();
     ctx.stroke();
 }
 
-function drawRect(x, y) {
+function drawArc(color, x, y) {
+    ctx.beginPath();
+    ctx.arc(x, y, 50, 0, 2 * Math.PI);
+    ctx.fillStyle = color
+    ctx.stroke();
+    ctx.fill()
+}
+
+function drawRect(color, x, y) {
+    ctx.beginPath();
     ctx.rect(x, y, 150, 150)
-    ctx.fillStyle = 'orange'
+    ctx.fillStyle = color
     ctx.fillRect(x, y, 150, 150)
     ctx.stroke()
     ctx.fill()
 }
 
-
-
-function drawTriangle() {
+function drawTriangle(color, x, y) {
     ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.lineTo(300, 150);
-    ctx.lineTo(100, 100);
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + 300, y + 150);
+    ctx.lineTo(x + 100, y + 100);
     ctx.closePath()
-
     ctx.lineWidth = 5;
-    ctx.strokeStyle = 'blue'
-    ctx.fillStyle = '#ff0000'
-
+    // ctx.strokeStyle = color
+    ctx.fillStyle = color
     ctx.stroke();
     ctx.fill()
 
 }
-
-
-function draw(ctx, x, y) {
-
-    ctx.beginPath();
-    ctx.moveTo(lastX, lastY);
-    ctx.lineTo(x, y);
-    ctx.closePath();
-    ctx.stroke();
-}
-
 
 function onMouseDown(e) {
     var xy = getMousePos(e);

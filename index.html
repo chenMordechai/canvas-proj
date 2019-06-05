@@ -12,22 +12,25 @@
 <body onload="init()">
 
     <div>
-        <input type="color" class="color" name="color" form="frmRegister" onclick="changeColor()" />
-
+        <input type="color" class="color" name="color" form="frmRegister" />
+        <select onchange="changeEl(this.value)">
+            <option value="choose">choose shape</option>
+            <option value="tri">Triangle</option>
+            <option value="rec">Rectangle</option>
+            <option value="cir">Circle</option>
+            <option value="li">Line</option>
+        </select>
+<button onclick="clearCanvas()">clear</button>
     </div>
 
 
-    <canvas  onmousedown="onMouseDown(event)" onmousemove="onMouseMove(event)" onmouseup="onMouseUp()" id="my-canvas" width="1000" height="800">
+    <canvas onmousedown="onMouseDown(event)" onmousemove="onMouseMove(event)" onmouseup="onMouseUp()" id="my-canvas"
+        width="1000" height="800">
         Update your browser to enjoy canvas!
     </canvas>
     <!-- <button onclick="changeEl('triangle')">Triangle</button>
     <button onclick="changeEl('rect')">Rect</button>
      -->
-     <select onchange="changeEl(this.value)">
-    <option value="tri">Triangle</option>
-    <option value="rec">Rectangle</option>
-    <option value="cir">Circle</option>
-     </select>
 
 
 
