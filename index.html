@@ -20,7 +20,15 @@
             <option value="cir">Circle</option>
             <option value="li">Line</option>
         </select>
-<button onclick="clearCanvas()">clear</button>
+        <button onclick="clearCanvas()">clear</button>
+        <a href="#" onclick="downloadImg(this)" download="my-img.jpg">
+            Download as jpeg
+        </a>
+        <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+            <input name="img" id="imgData" type="hidden"/>
+            <button type="submit">Publish</button>
+          </form>
+          <div class="share-container"></div>
     </div>
 
 
